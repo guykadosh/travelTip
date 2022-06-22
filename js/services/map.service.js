@@ -3,7 +3,8 @@ export const mapService = {
   addMarker,
   panTo,
   getCurrLoc,
-  getUserPos
+  getUserPos,
+  getAddressCoords,
 }
 
 var gMap
@@ -75,6 +76,18 @@ function getUserPos() {
           })
 }
 
+function getAddressCoords(adress) {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${adress}&language=en&key=${API_KEY}`
+  return fetch(url)
+        .then(res => res.json())
+        .then(res => res.results[0])
+        .then(result => {
+          return {
+            pos: {lat: result.geometry.location.lat, lng: result.geometry.location.lng },
+            locName: result['address_components'][0]['long_name']
+          }
+        })
+}
 
 
 

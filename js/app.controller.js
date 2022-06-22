@@ -8,6 +8,7 @@ export const controller = {
   onDeleteLoc,
   onGoToLoc,
   onGoToUserPos,
+  onSearchLocation,
 }
 
 window.onload = onInit
@@ -23,13 +24,6 @@ function onInit() {
     .catch(() => console.log('Error: cannot init map'))
 
   viewEvents.addEventListeners()
-}
-
-function getPosition() {
-  console.log('Getting Pos')
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject)
-  })
 }
 
 function onPanTo({ lat, lng }) {
@@ -71,7 +65,7 @@ function onAddLoc(ev) {
 function onSearchLocation(ev) {
   ev.preventDefault()
 
-  const adress = document.querySelector('.seacrh-location').value
-  getAddressCoords(adress) 
-    .then(coords => onPanTo(coords))
+  const adress = document.querySelector('.input').value
+  mapService.getAddressCoords(adress) 
+    .then(coords => onPanTo(coords.pos))
 }
