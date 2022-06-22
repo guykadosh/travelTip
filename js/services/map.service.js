@@ -6,6 +6,7 @@ export const mapService = {
   panTo,
   getCurrLoc,
   getUserPos,
+  getAddressCoords,
 }
 
 var gMap
@@ -17,9 +18,7 @@ function getCurrLoc() {
 }
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
-  console.log('InitMap')
   return _connectGoogleApi().then(() => {
-    console.log('google available')
     gMap = new google.maps.Map(document.querySelector('#map'), {
       center: { lat, lng },
       zoom: 15,
@@ -77,4 +76,20 @@ function getUserPos() {
       lng: res.coords.longitude,
     }
   })
+}
+
+function getAddressCoords(adress) {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${adress}&language=en&key=${API_KEY}`
+  return fetch(url)
+    .then(res => res.json())
+    .then(res => res.results[0])
+    .then(result => {
+      return {
+        pos: {
+          lat: result.geometry.location.lat,
+          lng: result.geometry.location.lng,
+        },
+        locName: result['address_components'][0]['long_name'],
+      }
+    })
 }

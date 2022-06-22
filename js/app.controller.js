@@ -9,6 +9,7 @@ export const controller = {
   onDeleteLoc,
   onGoToLoc,
   onGoToUserPos,
+  onSearchLocation,
 }
 
 window.onload = onInit
@@ -26,22 +27,11 @@ function onInit() {
   viewEvents.addEventListeners()
 }
 
-function getPosition() {
-  console.log('Getting Pos')
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject)
-  })
-}
-
 function onPanTo({ lat, lng }) {
-  console.log('Panning the Map')
   mapService.panTo(lat, lng)
+  mapService.addMarker(pos)
 
   utilService.setQueryStringParams(lat, lng)
-}
-
-function onAddMarker(pos) {
-  mapService.addMarker(pos)
 }
 
 function onDeleteLoc(ev) {
@@ -57,7 +47,6 @@ function onGoToLoc(ev) {
   const lng = +data.lng
 
   onPanTo({ lat, lng })
-  onAddMarker({ lat, lng })
 }
 
 function onGoToUserPos() {
@@ -79,14 +68,15 @@ function onAddLoc(ev) {
 function onSearchLocation(ev) {
   ev.preventDefault()
 
-  const adress = document.querySelector('.seacrh-location').value
-  getAddressCoords(adress).then(coords => onPanTo(coords))
+  const adress = document.querySelector('.search-input').value
+  mapService.getAddressCoords(adress).then(coords => onPanTo(coords.pos))
 }
 
 function showLocations() {
   showLoader()
   locService.getLocs().then(viewLocs.renderFavLocs)
 }
+
 function showLoader() {
   document.querySelector('.spinner').classList.remove('hide')
   document.querySelector('.locations').classList.add('hide')
