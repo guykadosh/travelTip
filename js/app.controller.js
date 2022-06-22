@@ -9,7 +9,7 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 
 function onInit() {
-  viewLocs.renderFavLocs(locService.getLocs)
+  locService.getLocs().then(viewLocs.renderFavLocs)
   mapService
     .initMap()
     .then(() => {

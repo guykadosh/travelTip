@@ -1,10 +1,10 @@
-export const domService = {
-    renderFavLocs,
+export const viewLocs = {
+  renderFavLocs,
 }
 
 function renderFavLocs(locs) {
-    let strHtml = locs.map(loc => {
-        return `<details class="location flex space-between">
+  let strHtml = locs.map(loc => {
+    return `<details class="location flex space-between">
                     <summary>
                     <h3>
                         <i class="fa-solid fa-location-dot"></i>
@@ -24,7 +24,6 @@ function renderFavLocs(locs) {
                         <button class="btn btn-delete onclick="onDeleteLoc(${loc.id})"">X</button>
                     </div>
                 </details>`
-    })
-    document.querySelector('.locations').innerHTML = strHtml.join('')
+  })
+  document.querySelector('.locations').innerHTML = strHtml.join('')
 }
-
