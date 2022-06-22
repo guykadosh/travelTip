@@ -1,5 +1,5 @@
 header {
-  background-color: #20c997;
+  background-color: var(--primary-color);
   margin-block-end: 2.4rem;
 }
 

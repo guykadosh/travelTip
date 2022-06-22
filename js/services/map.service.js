@@ -9,8 +9,8 @@ export const mapService = {
   getAddressCoords,
 }
 
-var gMap
-var gCurrLoc
+let gMap
+let gCurrLoc
 const API_KEY = 'AIzaSyCkGvOiUSEqM5BMxvFVJq2kTDQ-gWzGvTE'
 
 function getCurrLoc() {
@@ -39,7 +39,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 }
 
 function addMarker(loc) {
-  var marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
     position: loc,
     map: gMap,
     title: 'Hello World!',
@@ -48,14 +48,14 @@ function addMarker(loc) {
 }
 
 function panTo(lat, lng) {
-  var laLatLng = new google.maps.LatLng(lat, lng)
+  let laLatLng = new google.maps.LatLng(lat, lng)
   gMap.panTo(laLatLng)
   gCurrLoc = { lat, lng }
 }
 
 function _connectGoogleApi() {
   if (window.google) return Promise.resolve()
-  var elGoogleApi = document.createElement('script')
+  let elGoogleApi = document.createElement('script')
   elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
   elGoogleApi.async = true
   document.body.append(elGoogleApi)

@@ -14,13 +14,18 @@ function getLocs() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(locs)
-    }, 2000)
+    }, 1200)
   })
 }
 
 function addLoc(loc, name) {
   locs.push(_createLoc(loc, name))
   storageService.save(LOCS_KEY, locs)
+}
+
+function deleteLoc(locId) {
+  const locIdx = locs.findIndex(loc => loc.id === locId)
+  locs.splice(locIdx, 1)
 }
 
 function _createLoc(pos, name) {
@@ -45,9 +50,3 @@ function _createLocs() {
   storageService.save(LOCS_KEY, locs)
   return locs
 }
-
-function deleteLoc(locId) {
-  const locIdx = locs.findIndex(loc => loc.id === locId)
-  locs.splice(locIdx, 1)
-}
-

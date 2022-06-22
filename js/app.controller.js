@@ -69,7 +69,11 @@ function onSearchLocation(ev) {
   ev.preventDefault()
 
   const adress = document.querySelector('.search-input').value
-  mapService.getAddressCoords(adress).then(coords => onPanTo(coords.pos))
+  mapService.getAddressCoords(adress).then(address => {
+    onPanTo(address.pos)
+    locService.addLoc(address.pos, address.locName)
+    showLocations()
+  })
 }
 
 function showLocations() {

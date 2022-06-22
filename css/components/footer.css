@@ -1,0 +1,15 @@
+footer {
+  background-color: var(--primary-color);
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+
+  font-size: 0.8rem;
+  padding: 2rem;
+}
+
+footer img {
+  width: 100px;
+  margin-block-end: 0.8rem;
+}
