@@ -1,0 +1,17 @@
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: #d0ebff;
+  background-image: linear-gradient(to right bottom, #4dabf7, #339af0);
+  flex-basis: 50%;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.8rem;
+}
+
+.temp {
+  font-size: 2rem;
+}

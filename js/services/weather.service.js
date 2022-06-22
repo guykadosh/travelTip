@@ -1,3 +1,7 @@
+export const weatherService = {
+  getWeatherDetails,
+}
+
 const API_KEY = '31042fe910240451f5d529801c3a040a'
 
 function getWeatherDetails({ lat, lng }) {
@@ -8,6 +12,10 @@ function getWeatherDetails({ lat, lng }) {
       return {
         weather: res.weather.main,
         temp: res.main.temp,
+        minTemp: res.main['temp_min'],
+        minTemp: res.main['temp_max'],
+        windSpeed: res.wind.speed,
+        state: res.sys.id,
       }
     })
 }

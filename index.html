@@ -41,21 +41,22 @@
 
     <main class="main-layout flex">
       <div class="locations-container">
-        <details class="add-location flex space-between">
-          <summary><i class="fa-solid fa-plus"></i> Add new Location</summary>
-          <form class="add-loc">
-            <input
-              class="input loc-name"
-              type="text"
-              id="name"
-              placeholder="Location Name"
-            />
-            <button class="btn">Add</button>
-          </form>
-        </details>
+        <div>
+          <details class="add-location flex space-between">
+            <summary><i class="fa-solid fa-plus"></i> Add new Location</summary>
+            <form class="add-loc">
+              <input
+                class="input loc-name"
+                type="text"
+                id="name"
+                placeholder="Location Name"
+              />
+              <button class="btn">Add</button>
+            </form>
+          </details>
 
-        <div class="locations">
-          <!-- <details class="location flex space-between">
+          <div class="locations">
+            <!-- <details class="location flex space-between">
             <summary>
               <h3>
                 <i class="fa-solid fa-location-dot"></i>
@@ -75,8 +76,31 @@
               <button class="btn btn-delete">X</button>
             </div>
           </details> -->
+          </div>
         </div>
         <div class="spinner hide"></div>
+        <div class="weather-container">
+          <div class="weather">
+            <p>
+              <i class="fa-solid fa-cloud-meatball"></i>
+              <span class="weather-state">Cloudy</span>
+              <span class="weather-state">IL</span>
+            </p>
+            <p>
+              <span class="temp">90°</span>
+            </p>
+            <p>
+              <i class="fa-solid fa-temperature-empty"></i> min
+              <span class="min-temp">30°</span>
+              <i class="fa-solid fa-temperature-high"></i> max
+              <span class="min-temp">90°</span>
+            </p>
+            <p>
+              <i class="fa-solid fa-wind"></i> wind
+              <span class="speed">30</span> m/s
+            </p>
+          </div>
+        </div>
       </div>
       <div class="wrapper-map">
         <div class="map-container">

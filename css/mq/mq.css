@@ -30,4 +30,12 @@
   #map {
     height: 350px;
   }
+
+  .input {
+    max-width: 200px;
+  }
+
+  .btn {
+    padding: 0.5rem;
+  }
 }

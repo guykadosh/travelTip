@@ -3,6 +3,7 @@ import { mapService } from './services/map.service.js'
 import { viewLocs } from './views/view.locs.js'
 import { viewEvents } from './views/view.events.js'
 import { utilService } from './services/util.service.js'
+import { weatherService } from './services/weather.service.js'
 
 export const controller = {
   onAddLoc,
@@ -27,11 +28,17 @@ function onInit() {
   viewEvents.addEventListeners()
 }
 
-function onPanTo({ lat, lng }) {
-  mapService.panTo(lat, lng)
-  mapService.addMarker({ lat, lng })
+// Locations functions
+function onAddLoc(ev) {
+  ev.preventDefault()
 
-  utilService.setQueryStringParams(lat, lng)
+  const locName = document.querySelector('.loc-name').value
+  if (!locName) return
+
+  const loc = mapService.getCurrLoc()
+
+  locService.addLoc(loc, locName)
+  showLocations()
 }
 
 function onDeleteLoc(ev) {
@@ -53,18 +60,7 @@ function onGoToUserPos() {
   mapService.getUserPos().then(pos => onPanTo(pos))
 }
 
-function onAddLoc(ev) {
-  ev.preventDefault()
-
-  const locName = document.querySelector('.loc-name').value
-  if (!locName) return
-
-  const loc = mapService.getCurrLoc()
-
-  locService.addLoc(loc, locName)
-  showLocations()
-}
-
+// Center the map on user sreach location and adds to locations
 function onSearchLocation(ev) {
   ev.preventDefault()
 
@@ -76,6 +72,7 @@ function onSearchLocation(ev) {
   })
 }
 
+// Loads and renders locations
 function showLocations() {
   showLoader()
   locService.getLocs().then(viewLocs.renderFavLocs)
@@ -86,6 +83,15 @@ function showLoader() {
   document.querySelector('.locations').classList.add('hide')
 }
 
+// Center the map to given location
+function onPanTo({ lat, lng }) {
+  mapService.panTo(lat, lng)
+  mapService.addMarker({ lat, lng })
+
+  utilService.setQueryStringParams(lat, lng)
+}
+
+// render map according to query params coords
 function renderByQueryStringParams() {
   // Retrieve data from the current query-params
   const queryStringParams = new URLSearchParams(window.location.search)
