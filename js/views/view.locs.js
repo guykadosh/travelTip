@@ -37,5 +37,5 @@ function renderFavLocs(locs) {
     .forEach(elBtn => elBtn.addEventListener('click', controller.onDeleteLoc))
 
   document.querySelector('.spinner').classList.add('hide')
-  document.querySelector('.locations').classList.hide('hide')
+  document.querySelector('.locations').classList.remove('hide')
 }

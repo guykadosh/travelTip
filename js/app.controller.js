@@ -29,7 +29,7 @@ function onInit() {
 
 function onPanTo({ lat, lng }) {
   mapService.panTo(lat, lng)
-  mapService.addMarker(pos)
+  mapService.addMarker({ lat, lng })
 
   utilService.setQueryStringParams(lat, lng)
 }
