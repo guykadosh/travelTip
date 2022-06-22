@@ -78,8 +78,8 @@ function getUserPos() {
   })
 }
 
-function getAddressCoords(adress) {
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${adress}&language=en&key=${API_KEY}`
+function getAddressCoords(address) {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&language=en&key=${API_KEY}`
   return fetch(url)
     .then(res => res.json())
     .then(res => res.results[0])
