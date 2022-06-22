@@ -1,9 +1,11 @@
+import { utilService } from './util.service.js'
+
 export const mapService = {
   initMap,
   addMarker,
   panTo,
   getCurrLoc,
-  getUserPos
+  getUserPos,
 }
 
 var gMap
@@ -31,6 +33,8 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
       panTo(lat, lng)
 
       gCurrLoc = { lat, lng }
+
+      utilService.setQueryStringParams(lat, lng)
     })
   })
 }
@@ -65,22 +69,12 @@ function _connectGoogleApi() {
 
 function getUserPos() {
   if (!navigator.geolocation) return
-  return new Promise((resolve, reject) => 
-        navigator.geolocation.getCurrentPosition(resolve, reject))
-          .then(res => {
-            return {
-              lat: res.coords.latitude,
-              lng: res.coords.longitude
-            }
-          })
+  return new Promise((resolve, reject) =>
+    navigator.geolocation.getCurrentPosition(resolve, reject)
+  ).then(res => {
+    return {
+      lat: res.coords.latitude,
+      lng: res.coords.longitude,
+    }
+  })
 }
-
-
-
-
-
-
-
-
-
-

@@ -2,6 +2,7 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { viewLocs } from './views/view.locs.js'
 import { viewEvents } from './views/view.events.js'
+import { utilService } from './services/util.service.js'
 
 export const controller = {
   onAddLoc,
@@ -13,7 +14,7 @@ export const controller = {
 window.onload = onInit
 
 function onInit() {
-  locService.getLocs().then(viewLocs.renderFavLocs)
+  showLocations()
 
   mapService
     .initMap()
@@ -35,12 +36,18 @@ function getPosition() {
 function onPanTo({ lat, lng }) {
   console.log('Panning the Map')
   mapService.panTo(lat, lng)
+
+  utilService.setQueryStringParams(lat, lng)
+}
+
+function onAddMarker(pos) {
+  mapService.addMarker(pos)
 }
 
 function onDeleteLoc(ev) {
   const locId = ev.target.dataset.id
   locService.deleteLoc(locId)
-  locService.getLocs().then(viewLocs.renderFavLocs)
+  showLocations()
 }
 
 function onGoToLoc(ev) {
@@ -50,6 +57,7 @@ function onGoToLoc(ev) {
   const lng = +data.lng
 
   onPanTo({ lat, lng })
+  onAddMarker({ lat, lng })
 }
 
 function onGoToUserPos() {
@@ -65,13 +73,21 @@ function onAddLoc(ev) {
   const loc = mapService.getCurrLoc()
 
   locService.addLoc(loc, locName)
-  locService.getLocs().then(viewLocs.renderFavLocs)
+  showLocations()
 }
 
 function onSearchLocation(ev) {
   ev.preventDefault()
 
   const adress = document.querySelector('.seacrh-location').value
-  getAddressCoords(adress) 
-    .then(coords => onPanTo(coords))
+  getAddressCoords(adress).then(coords => onPanTo(coords))
+}
+
+function showLocations() {
+  showLoader()
+  locService.getLocs().then(viewLocs.renderFavLocs)
+}
+function showLoader() {
+  document.querySelector('.spinner').classList.remove('hide')
+  document.querySelector('.locations').classList.add('hide')
 }

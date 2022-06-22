@@ -3,6 +3,10 @@
   margin-inline-end: 2rem;
 }
 
+.locations.hide {
+  display: none;
+}
+
 .add-location {
   background-color: #c3fae8;
 }
