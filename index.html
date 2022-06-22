@@ -20,7 +20,7 @@
           <img src="img/logo.png" alt="" />
         </div>
 
-        <div class="search">
+        <div class="search flex">
           <form action="">
             <input
               class="input"
@@ -32,14 +32,30 @@
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
+          <button class="btn btn-user-pos">
+            <i class="fa-solid fa-location-crosshairs"></i>
+          </button>
         </div>
       </div>
     </header>
 
     <main class="main-layout flex">
       <div class="locations-container">
+        <details class="add-location flex space-between">
+          <summary><i class="fa-solid fa-plus"></i> Add new Location</summary>
+          <form class="add-loc">
+            <input
+              class="input loc-name"
+              type="text"
+              id="name"
+              placeholder="Location Name"
+            />
+            <button class="btn">Add</button>
+          </form>
+        </details>
+
         <div class="locations">
-          <details class="location flex space-between">
+          <!-- <details class="location flex space-between">
             <summary>
               <h3>
                 <i class="fa-solid fa-location-dot"></i>
@@ -58,59 +74,11 @@
               </button>
               <button class="btn btn-delete">X</button>
             </div>
-          </details>
-          <details class="location flex space-between">
-            <summary>
-              <h3>
-                <i class="fa-solid fa-location-dot"></i>
-                <span>My Fave Place</span>
-              </h3>
-            </summary>
-
-            <p><span>CreatedAt</span> <span>301292</span></p>
-            <p><span>EditedAt</span> <span>852154</span></p>
-            <p><span>Lat</span> <span>30.2555</span></p>
-            <p><span>Lng</span> <span>30.2555</span></p>
-
-            <div class="btns-con">
-              <button class="btn btn-go">
-                <i class="fa-solid fa-location-dot"></i>
-              </button>
-              <button class="btn btn-delete">X</button>
-            </div>
-          </details>
-          <details class="location flex space-between">
-            <summary>
-              <h3>
-                <i class="fa-solid fa-location-dot"></i>
-                <span>My Fave Place</span>
-              </h3>
-            </summary>
-
-            <p><span>CreatedAt</span> <span>301292</span></p>
-            <p><span>EditedAt</span> <span>852154</span></p>
-            <p><span>Lat</span> <span>30.2555</span></p>
-            <p><span>Lng</span> <span>30.2555</span></p>
-
-            <div class="btns-con">
-              <button class="btn btn-go">
-                <i class="fa-solid fa-location-dot"></i>
-              </button>
-              <button class="btn btn-delete">X</button>
-            </div>
-          </details>
+          </details> -->
         </div>
       </div>
       <div id="map" style="width: 100%; height: 400px"></div>
     </main>
-    <button class="btn-add-marker">Add Marker Speific Location</button>
-    <button class="btn-user-pos">Get User Position</button>
-    <button class="btn-get-locs">Get Locations</button>
-    <button class="btn-pan">Pan Map to Tokyo</button>
-
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations: <span class="locs"></span></p>
-
     <script type="module" src="js/app.controller.js"></script>
   </body>
 </html>

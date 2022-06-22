@@ -18,12 +18,15 @@ function renderFavLocs(locs) {
                     <p><span>Lng</span> <span>${loc.loc.lng}</span></p>
 
                     <div class="btns-con">
-                        <button class="btn btn-go onclick="onGoTo(${loc.loc})"">
+                        <button class="btn btn-go " onclick="onGoTo(${loc.loc})">
                             <i class="fa-solid fa-location-dot"></i>
                         </button>
-                        <button class="btn btn-delete onclick="onDeleteLoc(${loc.id})"">X</button>
+                        <button class="btn btn-delete" onclick="onDeleteLoc(${loc.id})">X</button>
                     </div>
                 </details>`
   })
   document.querySelector('.locations').innerHTML = strHtml.join('')
+  //   document
+  //     .querySelectorAll('.btn-go')
+  //     .forEach(elBtn => elBtn.addEventListener('click', onGoTo))
 }

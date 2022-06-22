@@ -16,6 +16,10 @@ header {
   position: relative;
 }
 
+.search form {
+  margin-inline-end: 0.5rem;
+}
+
 .input {
   width: 20rem;
   height: 2rem;

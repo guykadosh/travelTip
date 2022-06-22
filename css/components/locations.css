@@ -3,6 +3,14 @@
   margin-inline-end: 2rem;
 }
 
+.add-location {
+  background-color: #c3fae8;
+}
+
+.add-location .input {
+  margin-inline-end: 0.8rem;
+}
+
 .location p {
   display: flex;
   justify-content: space-between;
@@ -23,6 +31,14 @@
 
 .location .btns-con button:first-child {
   margin-inline-end: 0.5rem;
+}
+
+.btn-add-loc {
+  margin-block-end: 0.8rem;
+}
+
+details {
+  padding: 0.2rem;
 }
 
 details[open] summary ~ * {

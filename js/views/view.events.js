@@ -1,11 +1,14 @@
-function addEventListeners() {
-  document
-    .querySelector('.btn-add-marker')
-    .addEventListener('click', onAddMarker)
-  document
-    .querySelector('.btn-user-pos')
-    .addEventListener('click', onGetUserPos)
-  document.querySelector('.btn-get-locs').addEventListener('click', onGetLocs)
-  document.querySelector('.btn-pan').addEventListener('click', onPanTo)
+import { controller } from '../app.controller.js'
+
+export const viewEvents = {
+  addEventListeners,
 }
 
+function addEventListeners() {
+  document
+    .querySelector('.add-loc')
+    .addEventListener('click', controller.onAddLoc)
+  document
+    .querySelector('.btn-user-pos')
+    .addEventListener('click', controller.onGoToUserPos)
+}
