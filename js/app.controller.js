@@ -11,7 +11,8 @@ window.onload = onInit
 window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
-window.onGetUserPos = onGetUserPos
+// window.onGetUserPos = onGetUserPos
+window.onGoToUserPos = onGoToUserPos
 
 function onInit() {
   locService.getLocs().then(viewLocs.renderFavLocs)
@@ -34,9 +35,9 @@ function getPosition() {
   })
 }
 
-function onPanTo() {
+function onPanTo({ lat, lng }) {
   console.log('Panning the Map')
-  mapService.panTo(35.6895, 139.6917)
+  mapService.panTo(lat, lng)
 }
 
 function onDeleteLoc(locId) {
@@ -45,7 +46,11 @@ function onDeleteLoc(locId) {
 }
 
 function onGoTo({ lat, lng }) {
-  mapService.panTo(lat, lng)
+  onPanTo(lat, lng)
+}
+
+function onGoToUserPos() {
+  mapService.getUserPos().then(pos => onPanTo(pos))
 }
 
 function onAddLoc(ev) {
