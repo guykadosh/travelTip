@@ -15,6 +15,11 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
       zoom: 15,
     })
     console.log('Map!', gMap)
+    gMap.addListener('click', mapsMouseEvent => {
+      console.log(mapsMouseEvent)
+      console.log(mapsMouseEvent.latLng.lat())
+      console.log(mapsMouseEvent.latLng.lng())
+    })
   })
 }
 
