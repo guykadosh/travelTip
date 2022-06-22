@@ -11,4 +11,7 @@ function addEventListeners() {
   document
     .querySelector('.btn-user-pos')
     .addEventListener('click', controller.onGoToUserPos)
+  document
+    .querySelector('.seacrh-location')
+    .addEventListener('submit', controller.onSearchLocation)
 }
