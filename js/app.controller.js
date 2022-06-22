@@ -44,11 +44,11 @@ function onDeleteLoc(ev) {
 }
 
 function onGoToLoc(ev) {
-  console.log(ev.target.dataset)
-  const lat = +ev.target.dataset.lat
-  const lng = +ev.target.dataset.lng
+  const data = ev.target.closest('[data-lat]').dataset
 
-  console.log(lat, lng)
+  const lat = +data.lat
+  const lng = +data.lng
+
   onPanTo({ lat, lng })
 }
 
