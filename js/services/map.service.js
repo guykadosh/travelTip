@@ -10,7 +10,7 @@ export const mapService = {
 }
 
 let gMap
-let gCurrLoc
+let gCurrLoc = { lat: 32.0749831, lng: 34.9120554 }
 const API_KEY = 'AIzaSyCkGvOiUSEqM5BMxvFVJq2kTDQ-gWzGvTE'
 
 function getCurrLoc() {

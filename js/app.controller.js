@@ -4,6 +4,7 @@ import { viewLocs } from './views/view.locs.js'
 import { viewEvents } from './views/view.events.js'
 import { utilService } from './services/util.service.js'
 import { weatherService } from './services/weather.service.js'
+import { weatherView } from './views/view.weather.js'
 
 export const controller = {
   onAddLoc,
@@ -13,6 +14,7 @@ export const controller = {
   onSearchLocation,
 }
 
+console.log(weatherView)
 window.onload = onInit
 
 function onInit() {
@@ -74,8 +76,11 @@ function onSearchLocation(ev) {
 
 // Loads and renders locations
 function showLocations() {
+  const pos = mapService.getCurrLoc()
+  console.log(pos)
   showLoader()
   locService.getLocs().then(viewLocs.renderFavLocs)
+  weatherService.getWeather(pos).then(weatherView.renderWeather)
 }
 
 function showLoader() {
@@ -89,6 +94,7 @@ function onPanTo({ lat, lng }) {
   mapService.addMarker({ lat, lng })
 
   utilService.setQueryStringParams(lat, lng)
+  weatherService.getWeather({ lat, lng }).then(weatherView.renderWeather)
 }
 
 // render map according to query params coords
