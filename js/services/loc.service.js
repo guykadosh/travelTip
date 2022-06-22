@@ -3,6 +3,7 @@ import { utilService } from './util.service.js'
 
 export const locService = {
   getLocs,
+  deleteLoc,
 }
 
 const LOCS_KEY = 'locsDB'
@@ -44,4 +45,8 @@ function _createLocs() {
 
   storageService.save(LOCS_KEY, locs)
   return locs
+}
+
+function deleteLoc(locId) {
+  
 }
