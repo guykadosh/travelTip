@@ -12,6 +12,7 @@ export const controller = {
   onGoToLoc,
   onGoToUserPos,
   onSearchLocation,
+  onCopyUrl,
 }
 
 console.log(weatherView)
@@ -112,4 +113,18 @@ function renderByQueryStringParams() {
 
   console.log('Hi')
   onPanTo(pos)
+}
+
+// Copies curr url
+function onCopyUrl() {
+  const queryStringParams = new URLSearchParams(window.location.search)
+
+  const url =
+    window.location.protocol +
+    '//' +
+    window.location.host +
+    window.location.pathname +
+    queryStringParams
+
+  navigator.clipboard.writeText(url)
 }
