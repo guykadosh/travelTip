@@ -70,5 +70,8 @@ function onAddLoc(ev) {
 
 function onSearchLocation(ev) {
   ev.preventDefault()
-  const adress = document.querySelector('.seacrh-location')
+
+  const adress = document.querySelector('.seacrh-location').value
+  getAddressCoords(adress) 
+    .then(coords => onPanTo(coords))
 }
