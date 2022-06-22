@@ -17,6 +17,7 @@ function getLocs() {
     }, 2000)
   })
 }
+
 function addLoc(loc, name) {
   locs.push(_createLoc(loc, name))
 }
