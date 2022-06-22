@@ -5,14 +5,10 @@ import { viewEvents } from './views/view.events.js'
 
 export const controller = {
   onAddLoc,
+  onGoToUserPos,
 }
 
 window.onload = onInit
-window.onAddMarker = onAddMarker
-window.onPanTo = onPanTo
-window.onGetLocs = onGetLocs
-// window.onGetUserPos = onGetUserPos
-window.onGoToUserPos = onGoToUserPos
 
 function onInit() {
   locService.getLocs().then(viewLocs.renderFavLocs)
@@ -27,7 +23,6 @@ function onInit() {
   viewEvents.addEventListeners()
 }
 
-// This function provides a Promise API to the callback-based-api of getCurrentPosition
 function getPosition() {
   console.log('Getting Pos')
   return new Promise((resolve, reject) => {
@@ -63,4 +58,9 @@ function onAddLoc(ev) {
 
   locService.addLoc(loc, locName)
   locService.getLocs().then(viewLocs.renderFavLocs)
+}
+
+function onSearchLocation(ev) {
+  ev.preventDefault()
+  const adress = document.querySelector('.seacrh-location')
 }
