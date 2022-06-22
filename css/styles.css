@@ -6,3 +6,9 @@
 @import 'basic/base.css';
 @import 'basic/layout.css';
 @import 'basic/helpers.css';
+@import 'basic/buttons.css';
+
+/* COMPONENTS  */
+@import 'components/header.css';
+@import 'components/map.css';
+@import 'components/locations.css';

@@ -1,0 +1,87 @@
+.locations-container {
+  flex-basis: 50%;
+  margin-inline-end: 2rem;
+}
+
+.location p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-family: Roboto-bold, sans-serif;
+  font-weight: 700;
+  margin-block-end: 0.1rem;
+}
+
+.location p span:first-child {
+  color: #868e96;
+}
+
+.location .btns-con {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.location .btns-con button:first-child {
+  margin-inline-end: 0.5rem;
+}
+
+details[open] summary ~ * {
+  animation: open 0.3s ease-in-out;
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+details summary h3 i {
+  margin-inline-end: 0.5rem;
+}
+
+details summary h3 {
+  font-size: 1rem;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  width: 100%;
+  padding: 0.5rem 0;
+  border-top: 1px solid black;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 300;
+  list-style: none;
+}
+
+details summary:after {
+  content: '+';
+  color: black;
+  position: absolute;
+  font-size: 1.75rem;
+  line-height: 0;
+  /* margin-top: 0.75rem; */
+  top: 20px;
+  right: 0;
+  font-weight: 200;
+  transform-origin: center;
+  transition: 200ms linear;
+}
+
+details[open] {
+  margin-bottom: 0.5rem;
+}
+details[open] summary:after {
+  transform: rotate(45deg);
+  font-size: 2rem;
+}
+
+details summary {
+  outline: 0;
+}

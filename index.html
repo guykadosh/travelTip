@@ -14,22 +14,95 @@
     <title>TravelTip</title>
   </head>
   <body>
-    <header class="header flex space-between">
-      <div class="logo-box">
-        <img src="img/logo.png" alt="" />
-      </div>
+    <header>
+      <div class="header flex space-between main-layout">
+        <div class="logo-box">
+          <img src="img/logo.png" alt="" />
+        </div>
 
-      <div class="search">
-        <form action="">
-          <input id="search" type="search" placeholder="Search" />
-          <button class="btn">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </form>
+        <div class="search">
+          <form action="">
+            <input
+              class="input"
+              id="search"
+              type="search"
+              placeholder="Search"
+            />
+            <button class="btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
       </div>
     </header>
 
-    <div id="map" style="width: 100%; height: 400px"></div>
+    <main class="main-layout flex">
+      <div class="locations-container">
+        <div class="locations">
+          <details class="location flex space-between">
+            <summary>
+              <h3>
+                <i class="fa-solid fa-location-dot"></i>
+                <span>My Fave Place</span>
+              </h3>
+            </summary>
+
+            <p><span>CreatedAt</span> <span>301292</span></p>
+            <p><span>EditedAt</span> <span>852154</span></p>
+            <p><span>Lat</span> <span>30.2555</span></p>
+            <p><span>Lng</span> <span>30.2555</span></p>
+
+            <div class="btns-con">
+              <button class="btn btn-go">
+                <i class="fa-solid fa-location-dot"></i>
+              </button>
+              <button class="btn btn-delete">X</button>
+            </div>
+          </details>
+          <details class="location flex space-between">
+            <summary>
+              <h3>
+                <i class="fa-solid fa-location-dot"></i>
+                <span>My Fave Place</span>
+              </h3>
+            </summary>
+
+            <p><span>CreatedAt</span> <span>301292</span></p>
+            <p><span>EditedAt</span> <span>852154</span></p>
+            <p><span>Lat</span> <span>30.2555</span></p>
+            <p><span>Lng</span> <span>30.2555</span></p>
+
+            <div class="btns-con">
+              <button class="btn btn-go">
+                <i class="fa-solid fa-location-dot"></i>
+              </button>
+              <button class="btn btn-delete">X</button>
+            </div>
+          </details>
+          <details class="location flex space-between">
+            <summary>
+              <h3>
+                <i class="fa-solid fa-location-dot"></i>
+                <span>My Fave Place</span>
+              </h3>
+            </summary>
+
+            <p><span>CreatedAt</span> <span>301292</span></p>
+            <p><span>EditedAt</span> <span>852154</span></p>
+            <p><span>Lat</span> <span>30.2555</span></p>
+            <p><span>Lng</span> <span>30.2555</span></p>
+
+            <div class="btns-con">
+              <button class="btn btn-go">
+                <i class="fa-solid fa-location-dot"></i>
+              </button>
+              <button class="btn btn-delete">X</button>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div id="map" style="width: 100%; height: 400px"></div>
+    </main>
     <button class="btn-add-marker">Add Marker Speific Location</button>
     <button class="btn-user-pos">Get User Position</button>
     <button class="btn-get-locs">Get Locations</button>

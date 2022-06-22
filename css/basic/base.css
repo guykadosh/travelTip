@@ -8,4 +8,5 @@ body {
   background-color: var(--light-gray);
   line-height: 1.4;
   font-family: Roboto-regular, sans-serif;
+  color: var(--dark-gray);
 }

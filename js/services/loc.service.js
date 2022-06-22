@@ -3,14 +3,11 @@ import { utilService } from './util.service.js'
 
 export const locService = {
   getLocs,
+  addLoc,
 }
 
 const LOCS_KEY = 'locsDB'
 const locs = _createLocs()
-
-/*
-
-*/
 
 function getLocs() {
   return new Promise((resolve, reject) => {
@@ -19,15 +16,18 @@ function getLocs() {
     }, 2000)
   })
 }
+function addLoc(loc, name) {
+  locs.push(_createLoc(loc, name))
+}
 
-function createLoc(loc, name) {
-  locs.push({
+function _createLoc(loc, name) {
+  return {
     id: utilService.makeId(),
     name,
     loc,
     createdAt: new Date(),
     updatedAt: new Date(),
-  })
+  }
 
   storageService.save(LOCS_KEY, locs)
 }
@@ -37,8 +37,8 @@ function _createLocs() {
 
   if (!locs || !locs.length) {
     locs = [
-      createLoc({ lat: 32.047104, lng: 34.832384 }, 'Greatplace'),
-      createLoc({ lat: 32.047201, lng: 34.832581 }, 'Neveragain'),
+      _createLoc({ lat: 32.047104, lng: 34.832384 }, 'Greatplace'),
+      _createLoc({ lat: 32.047201, lng: 34.832581 }, 'Neveragain'),
     ]
   }
 

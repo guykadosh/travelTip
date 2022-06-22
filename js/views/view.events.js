@@ -5,6 +5,6 @@ function addEventListeners() {
   document
     .querySelector('.btn-user-pos')
     .addEventListener('click', onGetUserPos)
-  document.querySelector('.btn-get-locs').addEventListeners('click', onGetLocs)
-  document.querySelector('.btn-pan').addEventListeners('click', onPanTo)
+  document.querySelector('.btn-get-locs').addEventListener('click', onGetLocs)
+  document.querySelector('.btn-pan').addEventListener('click', onPanTo)
 }
