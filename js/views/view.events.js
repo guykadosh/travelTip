@@ -8,3 +8,4 @@ function addEventListeners() {
   document.querySelector('.btn-get-locs').addEventListeners('click', onGetLocs)
   document.querySelector('.btn-pan').addEventListeners('click', onPanTo)
 }
+

@@ -1,5 +1,6 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
+import {domService} from './views/dom.service.js'
 
 window.onload = onInit
 window.onAddMarker = onAddMarker
@@ -8,6 +9,7 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 
 function onInit() {
+  domService.renderFavLocs(locService.getLocs)
   mapService
     .initMap()
     .then(() => {
