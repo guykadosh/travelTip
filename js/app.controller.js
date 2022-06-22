@@ -20,7 +20,7 @@ function onInit() {
   mapService
     .initMap()
     .then(() => {
-      console.log('Map is ready')
+      renderByQueryStringParams()
     })
     .catch(() => console.log('Error: cannot init map'))
 
@@ -80,4 +80,20 @@ function showLocations() {
 function showLoader() {
   document.querySelector('.spinner').classList.remove('hide')
   document.querySelector('.locations').classList.add('hide')
+}
+
+function renderByQueryStringParams() {
+  // Retrieve data from the current query-params
+  const queryStringParams = new URLSearchParams(window.location.search)
+
+  const pos = {
+    lat: +queryStringParams.get('lat') || 0,
+    lng: +queryStringParams.get('lng') || 0,
+  }
+
+  // return if no pos on the queries
+  if (!pos.lat && !pos.lng) return
+
+  console.log('Hi')
+  onPanTo(pos)
 }
