@@ -1,6 +1,6 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
-import {domService} from './views/dom.service.js'
+import { viewLocs } from './views/view.locs.js'
 
 window.onload = onInit
 window.onAddMarker = onAddMarker
@@ -9,7 +9,7 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 
 function onInit() {
-  domService.renderFavLocs(locService.getLocs)
+  viewLocs.renderFavLocs(locService.getLocs)
   mapService
     .initMap()
     .then(() => {
@@ -61,6 +61,6 @@ function onDeleteLoc(locId) {
   mapService.renderFavLocs()
 }
 
-function onGoTo({lat, lng}) {
+function onGoTo({ lat, lng }) {
   mapService.panTo(lat, lng)
 }

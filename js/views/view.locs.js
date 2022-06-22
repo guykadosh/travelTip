@@ -2,7 +2,6 @@ export const domService = {
     renderFavLocs,
 }
 
-
 function renderFavLocs(locs) {
     let strHtml = locs.map(loc => {
         return `<details class="location flex space-between">
