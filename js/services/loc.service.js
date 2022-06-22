@@ -20,18 +20,17 @@ function getLocs() {
 
 function addLoc(loc, name) {
   locs.push(_createLoc(loc, name))
+  storageService.save(LOCS_KEY, locs)
 }
 
-function _createLoc(loc, name) {
+function _createLoc(pos, name) {
   return {
     id: utilService.makeId(),
     name,
-    loc,
+    pos,
     createdAt: new Date(),
     updatedAt: new Date(),
   }
-
-  storageService.save(LOCS_KEY, locs)
 }
 
 function _createLocs() {
@@ -48,4 +47,7 @@ function _createLocs() {
   return locs
 }
 
-function deleteLoc(locId) {}
+function deleteLoc(locId) {
+  const locIdx = locs.findIndex(loc => loc.id === locId)
+  locs.splice(locIdx, 1)
+}

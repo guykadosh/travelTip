@@ -5,14 +5,11 @@ import { viewEvents } from './views/view.events.js'
 
 export const controller = {
   onAddLoc,
+  onDeleteLoc,
+  onGoToLoc,
 }
 
 window.onload = onInit
-window.onAddMarker = onAddMarker
-window.onPanTo = onPanTo
-window.onGetLocs = onGetLocs
-// window.onGetUserPos = onGetUserPos
-window.onGoToUserPos = onGoToUserPos
 
 function onInit() {
   locService.getLocs().then(viewLocs.renderFavLocs)
@@ -40,13 +37,19 @@ function onPanTo({ lat, lng }) {
   mapService.panTo(lat, lng)
 }
 
-function onDeleteLoc(locId) {
+function onDeleteLoc(ev) {
+  const locId = ev.target.dataset.id
   locService.deleteLoc(locId)
-  mapService.renderFavLocs()
+  locService.getLocs().then(viewLocs.renderFavLocs)
 }
 
-function onGoTo({ lat, lng }) {
-  onPanTo(lat, lng)
+function onGoToLoc(ev) {
+  console.log(ev.target.dataset)
+  const lat = +ev.target.dataset.lat
+  const lng = +ev.target.dataset.lng
+
+  console.log(lat, lng)
+  onPanTo({ lat, lng })
 }
 
 function onGoToUserPos() {
