@@ -3,6 +3,7 @@ export const mapService = {
   addMarker,
   panTo,
   getCurrLoc,
+  getUserPos
 }
 
 var gMap
@@ -45,6 +46,7 @@ function addMarker(loc) {
 function panTo(lat, lng) {
   var laLatLng = new google.maps.LatLng(lat, lng)
   gMap.panTo(laLatLng)
+  gCurrLoc = { lat, lng }
 }
 
 function _connectGoogleApi() {
@@ -60,3 +62,23 @@ function _connectGoogleApi() {
     elGoogleApi.onerror = () => reject('Google script failed to load')
   })
 }
+
+function getUserPos() {
+  if (!navigator.geolocation) return
+  return new Promise((resolve, reject) => 
+        navigator.geolocation.getCurrentPosition(resolve, reject))
+          .then(res => {
+            return {
+              lat: res.coords.latitude,
+              lng: res.coords.longitude
+            }
+          })
+}
+
+
+
+
+
+
+
+

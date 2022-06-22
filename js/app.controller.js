@@ -6,7 +6,8 @@ window.onload = onInit
 window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
-window.onGetUserPos = onGetUserPos
+// window.onGetUserPos = onGetUserPos
+window.onGoToUserPos = onGoToUserPos
 
 function onInit() {
   locService.getLocs().then(viewLocs.renderFavLocs)
@@ -38,22 +39,22 @@ function onGetLocs() {
   })
 }
 
-function onGetUserPos() {
-  getPosition()
-    .then(pos => {
-      console.log('User position is:', pos.coords)
-      document.querySelector(
-        '.user-pos'
-      ).innerText = `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
-    })
-    .catch(err => {
-      console.log('err!!!', err)
-    })
-}
+// function onGetUserPos() {
+//   getPosition()
+//     .then(pos => {
+//       console.log('User position is:', pos.coords)
+//       document.querySelector(
+//         '.user-pos'
+//       ).innerText = `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+//     })
+//     .catch(err => {
+//       console.log('err!!!', err)
+//     })
+// }
 
-function onPanTo() {
+function onPanTo({ lat, lng }) {
   console.log('Panning the Map')
-  mapService.panTo(35.6895, 139.6917)
+  mapService.panTo(lat, lng)
 }
 
 function onDeleteLoc(locId) {
@@ -62,5 +63,10 @@ function onDeleteLoc(locId) {
 }
 
 function onGoTo({ lat, lng }) {
-  mapService.panTo(lat, lng)
+  onPanTo(lat, lng)
+}
+
+function onGoToUserPos() {
+  mapService.getUserPos()
+    .then(pos => onPanTo(pos))
 }
