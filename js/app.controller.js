@@ -27,8 +27,8 @@ function onInit() {
 }
 
 function onPanTo({ lat, lng }) {
-  console.log('Panning the Map')
   mapService.panTo(lat, lng)
+  onAddMarker({lat, lng})
 }
 
 function onDeleteLoc(ev) {

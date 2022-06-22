@@ -42,7 +42,6 @@ function _createLocs() {
       _createLoc({ lat: 32.047201, lng: 34.832581 }, 'Neveragain'),
     ]
   }
-
   storageService.save(LOCS_KEY, locs)
   return locs
 }
