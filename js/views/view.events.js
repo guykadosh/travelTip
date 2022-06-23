@@ -15,6 +15,6 @@ function addEventListeners() {
     .querySelector('.btn-copy')
     .addEventListener('click', controller.onCopyUrl)
   document
-    .querySelector('.seacrh-location')
+    .querySelector('.search-location')
     .addEventListener('submit', controller.onSearchLocation)
 }
