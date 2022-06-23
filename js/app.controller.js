@@ -117,14 +117,7 @@ function renderByQueryStringParams() {
 
 // Copies curr url
 function onCopyUrl() {
-  const queryStringParams = new URLSearchParams(window.location.search)
-
-  const url =
-    window.location.protocol +
-    '//' +
-    window.location.host +
-    window.location.pathname +
-    queryStringParams
+  const url = window.location.href
 
   navigator.clipboard.writeText(url)
 }
